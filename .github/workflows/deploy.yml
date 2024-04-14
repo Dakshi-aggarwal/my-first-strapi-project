@@ -19,11 +19,11 @@ jobs:
   
   deploy:
     needs: build
-    runs-on: [ip-172-31-24-172]
+    runs-on: [self-hosted]
     steps:
       - name: Pull image from docker hub
         run: docker pull integrationninjas/my-first-strapi-project:latest
       - name: Delete old container
         run: docker rm -f my-first-strapi-project-container
       - name: Run docker container
-        run: docker run -d -p 1337:1337 --name my-first-strapi-project-container integrationninjas/nodejs-app
+        run: docker run -d -p 1337:1337 --name my-first-strapi-project-container integrationninjas/my-first-strapi-project
